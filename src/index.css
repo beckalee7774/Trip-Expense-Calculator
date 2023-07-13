@@ -99,6 +99,7 @@ body {
   align-items: center;
   gap: 1.6rem;
   font-size: 1.8rem;
+  flex-direction: column;
 }
 
 .add-friend input {
