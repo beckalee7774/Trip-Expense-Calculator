@@ -43,6 +43,7 @@ body {
   max-width: 120rem;
   margin: 0 auto;
   padding: 0 3.2rem;
+  margin-top: 4.8rem;
 }
 
 .btn {
@@ -52,6 +53,7 @@ body {
   border-radius: 100px;
   text-transform: uppercase;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .list {
@@ -120,6 +122,67 @@ body {
 
 .btn.cambridge-blue:hover {
   background-color: #c7e5da !important;
+}
+
+.input-friends .list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.input-friends .list li:nth-child(even) {
+  background-color: #b0dacc;
+}
+
+.input-friends .list li:last-child {
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+.input-friends .list {
+  background-color: #9cd1bf;
+  border-radius: 9px;
+  gap: 0;
+}
+
+.edit-and-delete {
+  display: flex;
+  gap: 1.2rem;
+  position: relative;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.edit-friend {
+  display: flex;
+  gap: 1.2rem;
+  position: absolute;
+  background-color: #fff;
+  font-size: 1.8rem;
+  top: -2.6rem;
+  right: 4rem;
+  padding: 1.2rem;
+  border-radius: 15px;
+}
+
+.edit-friend input {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background-color: #d5ebe3;
+  padding: 0.4rem;
+  border-radius: 9px;
+}
+
+.edit-submit-btn {
+  border: none;
+  padding: 1.2rem;
+  border-radius: 9px;
 }
 
 /**********************/

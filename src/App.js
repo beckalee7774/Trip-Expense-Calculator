@@ -25,12 +25,34 @@ export default function App() {
   function handleReset() {
     setFriends([]);
   }
+
+  function handleDeleteFriend(friend) {
+    setFriends((friends) => friends.filter((f) => f.id !== friend.id));
+  }
+
+  function handleEditFriend(friend) {
+    setFriends((friends) =>
+      friends.map(function (f) {
+        if (f.id === friend.id) {
+          return friend;
+        } else {
+          return f;
+        }
+      })
+    );
+  }
+
   return (
     <div className="container">
       <Header />
       <main>
-        <Friends onAddFriend={handleAddFriend}>
-          <FriendList friends={friends} />
+        <Friends>
+          <FriendList
+            friends={friends}
+            onDeleteFriend={handleDeleteFriend}
+            onEditFriend={handleEditFriend}
+          />
+          <AddFriend onAddFriend={handleAddFriend} friends={friends} />
         </Friends>
         <Calculate>
           <FriendsOwesList friends={friends} />
@@ -42,18 +64,21 @@ export default function App() {
 }
 
 function Friends({ children, onAddFriend }) {
+  return <div className="view-and-add-friends">{children}</div>;
+}
+
+function AddFriend({ onAddFriend }) {
   const [showAddFriend, setShowAddFriend] = useState(false);
   function handleAddNewFriend() {
     setShowAddFriend((s) => !s);
   }
   return (
-    <div className="view-and-add-friends">
-      {children}
+    <>
       <Button onClick={handleAddNewFriend} colorClass="cambridge-blue">
         {showAddFriend ? "Close" : "Add New Friend"}
       </Button>
-      {showAddFriend && <AddFriend onAddFriend={onAddFriend} />}
-    </div>
+      ;{showAddFriend && <AddFriendBox onAddFriend={onAddFriend} />}
+    </>
   );
 }
 
@@ -65,37 +90,106 @@ function Header() {
   );
 }
 
-function FriendList({ friends }) {
+function FriendList({ friends, onDeleteFriend, onEditFriend }) {
   return (
     <div className="input-friends">
       <h2 className="secondary-heading">Input your friends here</h2>
       <ul className="list">
         {friends.map((friend) => (
-          <Friend friend={friend} key={friend.name} />
+          <Friend
+            friend={friend}
+            key={friend.id}
+            onDeleteFriend={onDeleteFriend}
+            onEditFriend={onEditFriend}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Friend({ friend }) {
+function Friend({ friend, onDeleteFriend, onEditFriend }) {
+  const [editing, setEditing] = useState(false);
+  function handleEditing() {
+    setEditing((e) => !e);
+  }
   return (
     <li>
       {friend.name} paid : ${friend.paid}
+      <div class="edit-and-delete">
+        <button onClick={handleEditing} class="edit-btn">
+          ✏️
+        </button>
+        {editing && (
+          <EditFriend
+            friend={friend}
+            onEditFriend={onEditFriend}
+            onSetEditing={setEditing}
+          />
+        )}
+        <button onClick={() => onDeleteFriend(friend)} class="delete-btn">
+          ❌
+        </button>
+      </div>
     </li>
   );
 }
 
-function AddFriend({ onAddFriend }) {
+function EditFriend({ friend, onEditFriend, onSetEditing }) {
+  const [editName, setEditName] = useState(friend.name);
+  const [editPaid, setEditPaid] = useState(friend.paid);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!editName || editPaid === null || editPaid === undefined) return;
+    const newFriend = {
+      name: editName,
+      paid: editPaid,
+      id: friend.id,
+    };
+    onSetEditing(false);
+    onEditFriend(newFriend);
+  }
+  return (
+    <form className="edit-friend" name="edit-friend">
+      <div>
+        <label for="edit-name">Name </label>
+        <input
+          id="edit-name"
+          type="text"
+          placeholder="New Name"
+          value={editName}
+          onChange={(e) => setEditName(e.target.value)}
+        ></input>
+      </div>
+      <div>
+        <label for="edit-paid">Paid </label>
+        <input
+          id="edit-paid"
+          type="number"
+          placeholder="New Amount Paid"
+          value={editPaid}
+          onChange={(e) => setEditPaid(Number(e.target.value))}
+        ></input>
+      </div>
+      <button onClick={handleSubmit} className="cambridge-blue edit-submit-btn">
+        Submit
+      </button>
+    </form>
+  );
+}
+
+function AddFriendBox({ onAddFriend, friends }) {
   const [name, setName] = useState("");
   const [paid, setPaid] = useState(0);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!name || paid === null || paid === undefined) return;
+    const id = crypto.randomUUID();
     const newFriend = {
       name,
       paid,
+      id: id,
     };
     onAddFriend(newFriend);
     setName("");
