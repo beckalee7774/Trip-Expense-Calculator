@@ -1,13 +1,5 @@
 import { useState } from "react";
 
-// const intitialFriends = [
-//   { name: "Rebecca", paid: 50 },
-//   { name: "Andrew", paid: 150 },
-//   { name: "John", paid: 0 },
-//   { name: "Jeremy", paid: 200 },
-//   { name: "Adem", paid: 100 },
-// ];
-
 function Button({ children, colorClass, onClick }) {
   return (
     <button onClick={onClick} className={`btn ${colorClass}`}>
@@ -93,7 +85,7 @@ function Header() {
 function FriendList({ friends, onDeleteFriend, onEditFriend }) {
   return (
     <div className="input-friends">
-      <h2 className="secondary-heading">Input your friends here</h2>
+      <h2 className="secondary-heading">Friends who went on the trip</h2>
       <ul className="list">
         {friends.map((friend) => (
           <Friend
