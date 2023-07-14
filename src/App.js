@@ -88,7 +88,7 @@ function AddFriend({ onAddFriend }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!name || !paid) return;
+    if (!name || paid === null || paid === undefined) return;
     const newFriend = {
       name,
       paid,
