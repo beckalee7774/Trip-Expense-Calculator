@@ -29,22 +29,26 @@ export default function App() {
     <div className="container">
       <Header />
       <main>
-        <Friends friends={friends} onAddFriend={handleAddFriend} />
-        <Calculate friends={friends} />
+        <Friends onAddFriend={handleAddFriend}>
+          <FriendList friends={friends} />
+        </Friends>
+        <Calculate>
+          <FriendsOwesList friends={friends} />
+        </Calculate>
       </main>
       <Footer onReset={handleReset} />
     </div>
   );
 }
 
-function Friends({ friends, onAddFriend }) {
+function Friends({ children, onAddFriend }) {
   const [showAddFriend, setShowAddFriend] = useState(false);
   function handleAddNewFriend() {
     setShowAddFriend((s) => !s);
   }
   return (
     <div className="view-and-add-friends">
-      <FriendList friends={friends} />
+      {children}
       <Button onClick={handleAddNewFriend} colorClass="cambridge-blue">
         {showAddFriend ? "Close" : "Add New Friend"}
       </Button>
@@ -127,7 +131,7 @@ function AddFriend({ onAddFriend }) {
   );
 }
 
-function Calculate({ friends }) {
+function Calculate({ children }) {
   const [showOwesList, setShowOwesList] = useState(false);
   function handleCalculateExpenses() {
     setShowOwesList((s) => !s);
@@ -137,7 +141,7 @@ function Calculate({ friends }) {
       <Button onClick={handleCalculateExpenses} colorClass="celadon">
         {showOwesList ? "Close" : "Calculate Expenses"}
       </Button>
-      {showOwesList && <FriendsOwesList friends={friends} />}
+      {showOwesList && children}
     </div>
   );
 }
