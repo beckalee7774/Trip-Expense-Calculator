@@ -4,6 +4,7 @@ Tints and Shades for #94E8B4: #eafaf0 #dff8e9 ##d4f6e1 #bff1d2 #4a745a #4a745a #
 Tints and Shades for #3B322C: #c4c2c0 #b1adab #0c0a09
 Tints and Shades for #72BDA3 : #d5ebe3 #c7e5da #b0dacc #9cd1bf #223931
 Tints and Shades for #5E8C61 #1c2a1d
+background: #f0f9f0
 */
 
 /* - FONT SIZE SYSTEM (px)
@@ -31,20 +32,12 @@ body {
   line-height: 1;
   font-weight: 400;
   color: #333;
-  background-color: #4e6151;
+  background-color: #f0f9f0;
 }
 
 .primary-heading {
   font-size: 4.4rem;
   text-align: center;
-}
-
-.container {
-  max-width: 120rem;
-  margin: 0 auto;
-  padding: 0 3.2rem;
-  margin-top: 4.8rem;
-  margin-bottom: 4.8rem;
 }
 
 .btn {
@@ -63,16 +56,10 @@ body {
   flex-direction: column;
   margin: 3.2rem 0;
   font-size: 1.8rem;
-  border-radius: 9px;
 }
 
 .list li {
   padding: 2rem;
-}
-
-.list li:last-child {
-  border-bottom-left-radius: 9px;
-  border-bottom-right-radius: 9px;
 }
 
 /**********************/
@@ -81,57 +68,41 @@ body {
 .header {
   background-color: #5e8c61;
   padding: 4.8rem;
-  color: #1c2a1d;
-  border-top-left-radius: 11px;
-  border-top-right-radius: 11px;
+  color: #f0f9f0;
+  display: flex;
+  justify-content: center;
+}
+.title {
+  font-weight: 500;
+  font-size: 24px;
 }
 
 /**********************/
 /* FRIENDS SECTION */
 /**********************/
 
-.view-and-add-friends {
-  background-color: #72bda3;
+.enter-friends {
   padding: 4.8rem;
+}
+
+.view-and-add-friends {
+  background-color: #f0f9f0;
   color: #223931;
 }
 
 .secondary-heading {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 500;
 }
 
 .add-friend {
   max-width: 60rem;
   margin: 1.6rem 0;
-  background-color: #9cd1bf;
-  padding: 2.4rem;
   border-radius: 11px;
   display: flex;
   align-items: center;
   gap: 1.6rem;
   font-size: 1.8rem;
-  flex-direction: column;
-}
-
-.add-friend input {
-  padding: 1.2rem;
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  background-color: #d5ebe3;
-  border-radius: 9px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.cambridge-blue {
-  color: #395f52;
-  background-color: #d5ebe3 !important;
-  transition: all 0.4s;
-}
-
-.btn.cambridge-blue:hover {
-  background-color: #c7e5da !important;
 }
 
 .input-friends .list li {
@@ -141,10 +112,10 @@ body {
 }
 
 .input-friends .list li:nth-child(even) {
-  background-color: #b0dacc;
+  background-color: #d5ebe3;
 }
 .input-friends .list {
-  background-color: #9cd1bf;
+  background-color: #c7eade;
 }
 
 .edit-and-delete {
@@ -160,32 +131,18 @@ body {
   cursor: pointer;
 }
 
-.edit-friend {
+.edit-friend-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  position: absolute;
-  background-color: #fff;
-  font-size: 1.8rem;
-  top: -2.6rem;
-  right: 4rem;
-  padding: 1.2rem;
-  border-radius: 15px;
+  gap: 8px;
 }
 
-.edit-friend input {
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  background-color: #d5ebe3;
-  padding: 0.4rem;
-  border-radius: 9px;
+.next-buttons {
+  display: flex;
+  gap: 10px;
 }
 
-.edit-submit-btn {
-  border: none;
-  padding: 1.2rem;
-  border-radius: 9px;
+.next-buttons-container {
+  display: flex;
 }
 
 /**********************/
@@ -193,47 +150,14 @@ body {
 /**********************/
 
 .calculate {
-  background-color: #94e8b4;
+  background-color: #f0f9f0;
   padding: 4.8rem;
   color: #2c4636;
 }
 
-.celadon {
-  color: #4a745a;
-  background-color: #dff8e9 !important;
-  transition: all 0.4s;
-}
-
-.btn.celadon:hover {
-  background-color: #d4f6e1 !important;
-}
-
 .calculate .list li:nth-child(even) {
-  background-color: #d4f6e1;
+  background-color: #d5ebe3;
 }
 .calculate .list {
-  background-color: #bff1d2;
-}
-
-/**********************/
-/* FOOTER SECTION */
-/**********************/
-
-.footer {
-  background-color: #3b322c;
-  padding: 3.2rem;
-  padding-left: 4.8rem;
-  color: #fff;
-  border-bottom-left-radius: 11px;
-  border-bottom-right-radius: 11px;
-}
-
-.brown {
-  background-color: #c4c2c0 !important;
-  transition: all 0.4s;
-  color: #0c0a09;
-}
-
-.btn.brown:hover {
-  background-color: #b1adab !important;
+  background-color: #c7eade;
 }
