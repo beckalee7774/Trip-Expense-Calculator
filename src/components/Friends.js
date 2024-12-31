@@ -86,7 +86,7 @@ function Friend({ friend, onDeleteFriend, onEditFriend }) {
               onChange={(e) => setEditPaid(Number(e.target.value))}
             />
           </div>
-          <div class="edit-friend-buttons">
+          <div className="edit-friend-buttons">
             <Button variant="outlined" onClick={cancel}>
               cancel
             </Button>
@@ -100,11 +100,11 @@ function Friend({ friend, onDeleteFriend, onEditFriend }) {
           <span>
             {friend.name} paid : ${friend.paid}
           </span>
-          <div class="edit-and-delete">
-            <button onClick={handleEditing} class="edit-btn">
+          <div className="edit-and-delete">
+            <button onClick={handleEditing} className="edit-btn">
               <EditIcon />
             </button>
-            <button onClick={handleOpenConfirmDelete} class="delete-btn">
+            <button onClick={handleOpenConfirmDelete} className="delete-btn">
               <DeleteIcon />
             </button>
             <Dialog open={openConfirmDelete} onClose={handleCloseConfirmDelete}>

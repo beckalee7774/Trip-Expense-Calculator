@@ -18,7 +18,11 @@ function FriendsOwesList({ friends }) {
   return (
     <ul className="list">
       {friends.map((friend) => (
-        <FriendOwes friend={friend} owes={friend.paid - eachShouldPay} />
+        <FriendOwes
+          friend={friend}
+          owes={friend.paid - eachShouldPay}
+          key={friend.id}
+        />
       ))}
     </ul>
   );
